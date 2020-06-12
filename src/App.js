@@ -1,17 +1,34 @@
 import React from 'react';
-import MapContainer from './Map'
+import Home from './Components/Home'
+import AboutPage from './Components/AboutPage'
+import HowItWorksPage from './Components/HowItWorksPage'
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Header from './Components/Header';
 
 function App() {
   return (
-    <div>
-      <div className="Title">
-        <header>
-          <h1>Headcount</h1>
-        </header>
+    <Router>
+      <div>
+        <Header/>
+        <Switch>
+          <Route path="/how-it-works">
+            <HowItWorksPage />
+          </Route>
+          <Route path="/about">
+            <AboutPage />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
       </div>
-      <MapContainer />
-    </div>
+    </Router>
   );
 }
 
