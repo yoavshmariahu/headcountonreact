@@ -30,7 +30,7 @@
   display: flex;
   justify-content: left;
   padding: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 0em;
   background-color: rgb(50, 20, 190);
   color: #fff;
 }
