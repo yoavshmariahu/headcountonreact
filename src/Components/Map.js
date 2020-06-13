@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
@@ -43,12 +44,13 @@ export class MapContainer extends Component {
       });
     }
 
-    fetch('http://nikashkhanna.pythonanywhere.com/get-markers-info').then(res => res.json()).then((data) => {
-      this.setState({
-        stores: data,
-        loading: false,
-      });
-    });
+
+     fetch('https://nikashkhanna.pythonanywhere.com/get-markers-info').then(res => res.json()).then((data) => {
+        this.setState({
+         loading: false,
+            stores:data
+       });
+     });
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -92,7 +94,7 @@ export class MapContainer extends Component {
           <div className="col-md-12">
             <Map
               google={this.props.google}
-              zoom={12}
+              zoom={14}
               containerStyle={containerStyle}
               center={this.state.region}
               initialCenter={this.state.region}
@@ -108,6 +110,7 @@ export class MapContainer extends Component {
                   <h4>People:  {this.state.selectedPlace.name}</h4>
                 </div>
               </InfoWindow>
+
             </Map>
           </div>
         </div>
