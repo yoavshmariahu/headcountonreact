@@ -76,7 +76,7 @@ export class MapContainer extends Component {
         onClick={this.onMarkerClick}
         name={mark.subtitle.toString()}
         position={{lat: mark.latitude, lng: mark.longitude }}
-        icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+        icon="https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
         label={mark.title}
       />
     ));
