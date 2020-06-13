@@ -100,7 +100,7 @@ export class MapContainer extends Component {
               zoom={14}
               containerStyle={containerStyle}
               center={this.state.region}
-              initialCenter={this.props.center}
+              initialCenter={this.state.region}
               disableDefaultUI={true}
             >
               {this.displayMarkers(this.state.stores)}
