@@ -87,6 +87,9 @@ export class MapContainer extends Component {
     if (loading) {
       return null;
     }
+    if (!this.props) {
+      return null;
+    }
 
     return (
       <div className="container">
@@ -98,6 +101,7 @@ export class MapContainer extends Component {
               containerStyle={containerStyle}
               center={this.state.region}
               initialCenter={this.state.region}
+              disableDefaultUI={true}
             >
               {this.displayMarkers(this.state.stores)}
               <InfoWindow
