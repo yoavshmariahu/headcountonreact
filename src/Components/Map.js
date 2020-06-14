@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
+
+
 const containerStyle = {
 
   width: '100%',
@@ -70,20 +72,55 @@ export class MapContainer extends Component {
   };
 
   displayMarkers(stores) {
+
+    var i;
+    var toReturn = [];
+
+    for (i = 0; i < stores.length; i++) {
+      var marker = stores[i];
+      var title=marker.title;
+      var status=marker.status;
+      var img_str = 'http://nikashkhanna.pythonanywhere.com/get-marker-img/';
+      var slash = '/';
+      var img = img_str.concat(title,slash,status);
+      
+
+
+      toReturn.push((
+
+      <Marker
+        key={marker.key}
+        onClick={this.onMarkerClick}
+        name={marker.subtitle.toString()}
+        position={{lat: marker.latitude, lng: marker.longitude }}
+        icon={img}
+
+
+      />
+    ))
+    }
+    return toReturn;
+    
+
+
+    /*
     return stores.map(mark => (
+
       <Marker
         key={mark.key}
         onClick={this.onMarkerClick}
         name={mark.subtitle.toString()}
         position={{lat: mark.latitude, lng: mark.longitude }}
-        icon="https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-        label={mark.title}
+        
+        
+        
       />
-    ));
+    ));*/
   }
 
   render() {
     const { loading } = this.state;
+
     if (loading) {
       return null;
     }
@@ -103,6 +140,7 @@ export class MapContainer extends Component {
               initialCenter={this.state.region}
               disableDefaultUI={true}
             >
+
               {this.displayMarkers(this.state.stores)}
               <InfoWindow
                 onClose={this.onClose}
