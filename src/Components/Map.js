@@ -48,7 +48,7 @@ export class MapContainer extends Component {
     }
 
 
-     fetch('/get-markers-info').then(res => res.json()).then((data) => {
+     fetch('https://nikashkhanna.pythonanywhere.com/get-markers-info').then(res => res.json()).then((data) => {
         this.setState({
          loading: false,
             stores:data
