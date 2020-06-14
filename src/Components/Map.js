@@ -97,6 +97,7 @@ export class MapContainer extends Component {
         url: img,
 
       };
+      var scale = 75*(title.length/parseFloat(11));
       toReturn.push((
 
       <Marker
@@ -104,7 +105,7 @@ export class MapContainer extends Component {
         onClick={this.onMarkerClick}
         name={marker.subtitle.toString()}
         position={{lat: marker.latitude, lng: marker.longitude }}
-        icon={{url:img, scaledSize: {width: 90, height: 25}}}
+        icon={{url:img, scaledSize: {width: scale, height: 30}}}
 
         //symbol={{path: "../img/trader-joes-red.pdf"}}
         //label={{color: "blue", text: "hello", fontFamily: "Avenir", fontWeight: "bold"}}

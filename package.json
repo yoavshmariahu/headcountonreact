@@ -23,9 +23,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": {
-    "/get-markers-info": {"target": "https://nikashkhanna.pythonanywhere.com/"}
-  },
 
   "browserslist": {
     "production": [
