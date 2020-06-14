@@ -79,9 +79,16 @@ export class MapContainer extends Component {
     for (i = 0; i < stores.length; i++) {
       var marker = stores[i];
       var title=marker.title;
-      var status=marker.status;
-      var img_str = 'https://nikashkhanna.pythonanywhere.com/get-marker-img/';
+      var people=parseFloat(marker.subtitle);
+      var status;
       var slash = '/';
+      if (people >= 15) {
+        status = "red";
+      } else {
+        status = "green";
+      }
+
+      var img_str = 'https://nikashkhanna.pythonanywhere.com/get-marker-img/';
       var img = img_str.concat(title,slash,status);
 
 
