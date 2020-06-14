@@ -1,4 +1,4 @@
-
+/*global google*/
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
@@ -21,6 +21,7 @@ export class MapContainer extends Component {
       selectedPlace: {},
       region: {},
       loading: true,
+        img: null
     };
   }
 
@@ -47,7 +48,7 @@ export class MapContainer extends Component {
     }
 
 
-     fetch('https://nikashkhanna.pythonanywhere.com/get-markers-info').then(res => res.json()).then((data) => {
+     fetch('/get-markers-info').then(res => res.json()).then((data) => {
         this.setState({
          loading: false,
             stores:data
@@ -81,18 +82,21 @@ export class MapContainer extends Component {
       var title=marker.title;
       var people=parseFloat(marker.subtitle);
       var status;
-      var slash = '/';
+      var dash = '-';
       if (people >= 15) {
         status = "red";
       } else {
         status = "green";
       }
 
-      var img_str = 'https://nikashkhanna.pythonanywhere.com/get-marker-img/';
-      var img = img_str.concat(title,slash,status);
+      var img_str = '/img/';
+      var img = img_str.concat(title,dash,status).concat(".png");
 
 
+      var image = {
+        url: img,
 
+      };
       toReturn.push((
 
       <Marker
@@ -100,7 +104,11 @@ export class MapContainer extends Component {
         onClick={this.onMarkerClick}
         name={marker.subtitle.toString()}
         position={{lat: marker.latitude, lng: marker.longitude }}
-        icon={img}
+        icon={{url:img, scaledSize: {width: 90, height: 25}}}
+
+        //symbol={{path: "../img/trader-joes-red.pdf"}}
+        //label={{color: "blue", text: "hello", fontFamily: "Avenir", fontWeight: "bold"}}
+        //shape={{type: "rect", coord: [37, 122, 45, 150]}}
 
 
       />
