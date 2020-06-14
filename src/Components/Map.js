@@ -80,10 +80,10 @@ export class MapContainer extends Component {
       var marker = stores[i];
       var title=marker.title;
       var status=marker.status;
-      var img_str = 'http://nikashkhanna.pythonanywhere.com/get-marker-img/';
+      var img_str = 'https://nikashkhanna.pythonanywhere.com/get-marker-img/';
       var slash = '/';
       var img = img_str.concat(title,slash,status);
-      
+
 
 
       toReturn.push((
