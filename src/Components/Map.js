@@ -8,7 +8,7 @@ const containerStyle = {
 
   width: '100%',
   height: '95%'
-}
+};
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -47,14 +47,17 @@ export class MapContainer extends Component {
       });
     }
 
+     fetch('https://headcount.pythonanywhere.com/get-markers-info', {
+        method: 'POST',
+        headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
+        body: JSON.stringify({'user': '10sfull', 'pwd': 'half-cap-pppoker'})
+    })
+         .then(response => response.json())
+         .then(data => this.setState({ loading: false, stores:data }));
 
-     fetch('https://headcount.pythonanywhere.com/get-markers-info').then(res => res.json()).then((data) => {
-        this.setState({
-         loading: false,
-            stores:data
-       });
-     });
   }
+
+
 
   onMarkerClick = (props, marker, e) =>
     this.setState({
@@ -164,6 +167,7 @@ export class MapContainer extends Component {
                 visible={this.state.showingInfoWindow}
               >
                 <div>
+                  <h4>{this.state.selectedPlace.label}</h4>
                   <h4>{this.state.selectedPlace.label}</h4>
                   <h4>People:  {this.state.selectedPlace.name}</h4>
                 </div>
