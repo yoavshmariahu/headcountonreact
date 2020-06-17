@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
 import '../App.css';
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
   render() {
     return (
       <nav>
         <ul>
-          <li><NavLink to="/">Headcount</NavLink></li>
-          <li><NavLink to="/how-it-works">How it works</NavLink></li>
-          <li><NavLink to="/contact">Contact Us!</NavLink></li>
+          <li><NavLink tag={Link}  to="/">Headcount</NavLink></li>
+          <li><NavLink tag={Link}  to="/how-it-works">How it works</NavLink></li>
+          <li><NavLink tag={Link}  to="/contact">Contact Us!</NavLink></li>
         </ul>
       </nav>
     );
