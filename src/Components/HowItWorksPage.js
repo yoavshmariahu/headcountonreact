@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import '../How.css';
 
 class HowItWorksPage extends Component {
   render() {
     return (
       <div>
-        How it works page
+        <img src="/img/howitworks.png" class="center" alt="How it Works!"/>
       </div>
     );
   }

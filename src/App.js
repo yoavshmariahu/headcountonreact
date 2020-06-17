@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './Components/Home'
-import AboutPage from './Components/AboutPage'
+import Contact from './Components/Contact'
 import HowItWorksPage from './Components/HowItWorksPage'
 import './App.css';
 import {
@@ -19,8 +19,8 @@ function App() {
           <Route path="/how-it-works">
             <HowItWorksPage />
           </Route>
-          <Route path="/about">
-            <AboutPage />
+          <Route path="/contact">
+            <Contact />
           </Route>
           <Route path="/">
             <Home />
