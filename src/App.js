@@ -13,8 +13,8 @@ import Header from './Components/Header';
 function App() {
   return (
     <Router>
-      <div>
         <Header/>
+
         <Switch>
           <Route path="/how-it-works">
             <HowItWorksPage />
@@ -26,7 +26,7 @@ function App() {
             <Home />
           </Route>
         </Switch>
-      </div>
+
     </Router>
   );
 }
