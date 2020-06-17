@@ -9,7 +9,7 @@ class Header extends Component {
         <ul>
           <li><NavLink to="/">Headcount</NavLink></li>
           <li><NavLink to="/how-it-works">How it works</NavLink></li>
-          <li><NavLink to="/about">About</NavLink></li>
+          <li><NavLink to="/contact">Contact Us!</NavLink></li>
         </ul>
       </nav>
     );
