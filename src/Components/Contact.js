@@ -16,7 +16,7 @@ class Contact extends Component {
   render() {
       return (
         <div className="App">
-            <h1>Contact Me</h1>
+            <h1>Contact Headcount!</h1>
             <div>
                 <form onSubmit={this.handleSubmit.bind(this)} method="POST">
                     <label>Full Name</label>
