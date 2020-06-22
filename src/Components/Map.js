@@ -85,7 +85,6 @@ export class MapContainer extends Component {
 
     var i;
     var toReturn = [];
-    console.log(stores);
 
     for (i = 0; i < stores.length; i++) {
       var marker = stores[i];
