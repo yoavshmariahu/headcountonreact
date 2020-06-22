@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import '../ForStores.css'
-import { ListGroup, ListGroupItem} from 'react-bootstrap';
-import { MDBListGroup, MDBListGroupItem, MDBContainer } from "mdbreact";
 
 class ForStores extends Component {
   render() {
-    const questionList = [
-      {description: 'How to render list in React?', key: 0},
-      {description: 'Do you like JS?', key: 1},
-      {description: 'Do you know CSS?', key: 2}
-    ];
+    // const questionList = [
+    //   {description: 'How to render list in React?', key: 0},
+    //   {description: 'Do you like JS?', key: 1},
+    //   {description: 'Do you know CSS?', key: 2}
+    // ];
 
     return (
         <div className="title">

@@ -1,7 +1,6 @@
-/*global google*/
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-
+import '../Map.css'
 
 
 const containerStyle = {
@@ -19,41 +18,48 @@ export class MapContainer extends Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      region: {},
+      region: {
+            lat: 37.3230,
+            lng: -122.0322,
+          },
       loading: true,
         img: null
     };
   }
 
-  componentDidMount() {
+  componentDidMount(prevProps) {
     const currentComponent = this;
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        currentComponent.setState({
-          region: {
-            lat: parseFloat(position.coords.latitude),
-            lng: parseFloat(position.coords.longitude),
-          },
-          loading: false,
+    if(prevProps !== this.props){
+      if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          currentComponent.setState({
+            region: {
+              lat: parseFloat(position.coords.latitude),
+              lng: parseFloat(position.coords.longitude),
+            },
+            loading: false,
+          });
+        }, (error) => {
+          currentComponent.setState({
+            region: {
+              lat: 37.3230,
+              lng: -122.0322,
+            },
+            loading: false,
+          });
         });
-      }, (error) => {
-        currentComponent.setState({
-          region: {
-            lat: 37.3230,
-            lng: -122.0322,
-          },
-          loading: false,
-        });
-      });
-    }
+      }
 
-     fetch('https://headcount.pythonanywhere.com/get-markers-info', {
-        method: 'POST',
-        headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
-        body: JSON.stringify({'user': '10sfull', 'pwd': 'half-cap-pppoker'})
-    })
-         .then(response => response.json())
-         .then(data => this.setState({ loading: false, stores:data }));
+      fetch('https://headcount.pythonanywhere.com/get-markers-info', {
+          method: 'POST',
+          headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json'},
+          body: JSON.stringify({'user': '10sfull', 'pwd': 'half-cap-pppoker'})
+      })
+          .then(response => response.json())
+          .then(data => this.setState({ loading: false, stores:data }));
+
+      
+    }
 
   }
 
@@ -79,27 +85,31 @@ export class MapContainer extends Component {
 
     var i;
     var toReturn = [];
+    console.log(stores);
 
     for (i = 0; i < stores.length; i++) {
       var marker = stores[i];
       var title=marker.title;
       var people=parseFloat(marker.subtitle);
       var status;
+      var rec;
+      var percent_str;
+      var percent;
       var dash = '-';
-      if (people >= 15) {
+      if (marker['histogram'].capacity >= 0.75) {
         status = "red";
+        percent= marker['histogram'].capacity * 100;
+        rec = "The store is at ".concat(percent, "% capacity. It may be risky to come now.");
       } else {
         status = "green";
+        percent = marker['histogram'].capacity * 100;
+        percent_str = "The store is at ".concat(percent, "% capacity.");
+        rec = "Now is a good time to leave.";
       }
 
       var img_str = '/img/';
       var img = img_str.concat(title,dash,status).concat(".png");
-
-
-      var image = {
-        url: img,
-
-      };
+      
       var scale = 75*(title.length/parseFloat(11));
       toReturn.push((
 
@@ -107,6 +117,11 @@ export class MapContainer extends Component {
         key={marker.key}
         onClick={this.onMarkerClick}
         name={marker.subtitle.toString()}
+        title={marker.display}
+        cap = {marker.capacity}
+        recommendation = {rec}
+        percent_string = {percent_str}
+        capacity = {percent}
         position={{lat: marker.latitude, lng: marker.longitude }}
         icon={{url:img, scaledSize: {width: scale, height: 30}}}
 
@@ -141,12 +156,20 @@ export class MapContainer extends Component {
     const { loading } = this.state;
 
     if (loading) {
-      return null;
+      return (<Map
+              google={this.props.google}
+              zoom={14}
+              containerStyle={containerStyle}
+              center={this.state.region}
+              initialCenter={this.state.region}
+              disableDefaultUI={true}
+            >
+
+            </Map>);
     }
     if (!this.props) {
       return null;
     }
-
     return (
       <div className="container">
         <div className="row">
@@ -167,9 +190,19 @@ export class MapContainer extends Component {
                 visible={this.state.showingInfoWindow}
               >
                 <div>
-                  <h4>{this.state.selectedPlace.label}</h4>
-                  <h4>{this.state.selectedPlace.label}</h4>
-                  <h4>People:  {this.state.selectedPlace.name}</h4>
+
+                  <h1>{this.state.selectedPlace.title}</h1>
+                  <div> 
+                    <h3>Our recommendation:</h3> {this.state.selectedPlace.recommendation}
+                  </div>
+                  <div>
+                    <h3>People:</h3> {this.state.selectedPlace.name}
+                  </div>
+                  <div>
+                    <h3>Capacity:</h3> {this.state.selectedPlace.capacity}%
+                  </div>
+                 
+                  
                 </div>
               </InfoWindow>
 

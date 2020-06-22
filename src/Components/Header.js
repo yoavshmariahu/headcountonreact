@@ -7,7 +7,7 @@ class Header extends Component {
   render() {
     return (
       <nav>
-        <ul class="navul">
+        <ul className="navul">
           <li><NavLink tag={Link}  to="/">Headcount</NavLink></li>
           <li><NavLink tag={Link}  to="/how-it-works">How it works</NavLink></li>
           <li><NavLink tag={Link}  to="/for-stores">For Stores</NavLink></li>
