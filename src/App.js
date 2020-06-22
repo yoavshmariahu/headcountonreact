@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './Components/Home'
 import Contact from './Components/Contact'
 import HowItWorksPage from './Components/HowItWorksPage'
+import ForStores from './Components/ForStores'
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/contact">
             <Contact />
+          </Route>
+          <Route path="/for-stores">
+            <ForStores />
           </Route>
           <Route path="/">
             <Home />
