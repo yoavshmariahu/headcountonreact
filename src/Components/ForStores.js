@@ -10,18 +10,25 @@ class ForStores extends Component {
     // ];
 
     return (
+        <div><br></br>
         <div className="title">
-          <h1>Please follow the steps below to join Headcount as a store!</h1>
+          <h3>Please join Headcount on a mission to encourage commonplace social distancing and promote the safety of our local community.
+</h3>
         <div className="App">
           <div>
-          <p>First, please fill out the following <a href="https://forms.gle/Li4DYfRDz5CXd8i38">form</a>. This form will ask you to provide some basic store information so we can generate a QR code for your store!</p>
-          <p>After completing the form, an email should be sent to you within 1-2 hours. This email will contain a pdf of a unique QR Code for your store.</p>
-          <p>Please print out the QR Code from the email and display the QR code near the entrance of your store's building. If your store has multiple entrances, please print/display a QR code at each entrance. </p>
-          <p>It is crucial for Headcount's accuracy that the store both enforces and encourages customers to check-in with the QR Code. If you are not sure how to enforce using the QR code, feel free to contact us and we can let you know what other stores have done!</p>
-          <p>Finally, we want to emphasis that there is absolutely no cost and minimal effort on behalf of your store to join Headcount. With this in mind, we hope you consider joining Headcount to reduce the spread of COVID-19 and to promote social distancing during this pandemic.</p>
+          <p>To be a part of Headcount, please <a href="https://forms.gle/Li4DYfRDz5CXd8i38">fill out this form</a>.
+          We promise it will only take a few moments. After completing this form, an email should be sent to you within 1-2 hours.
+
+            </p>
+          <p>This email will contain your establishment's <b>unique QR Code</b>. This QR Code gives us the ability to track your store’s Headcount at any given time.
+            </p>
+          <p>Please print out the QR Code and display this image in front of <b>each entrance</b> to your store. This way, when customers enter the store, they can use their smartphone to “check-in”.</p>
+          <p>It is crucial for Headcount's accuracy that the store <b>enforces and/or encourages</b> customers to check-in with the QR Code. If you are not sure how to enforce using the QR code, feel free to contact us and we can let you know what other stores have done!</p>
+          <p>Finally, we want to assure you that there is absolutely no cost and minimal effort on behalf of your store to join Headcount.<br></br><br></br> Please email us at <i>headcount.live.feedback@gmail.com</i> for more information or visit our Contact Us page!</p>
 
 </div>
         </div>
+      </div>
       </div>
     );
   }
