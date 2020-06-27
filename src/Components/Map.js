@@ -109,7 +109,7 @@ export class MapContainer extends Component {
       var img_str = '/img/';
       var img = img_str.concat(title,dash,status).concat(".png");
       
-      var scale = 75*(title.length/parseFloat(11));
+      var scale = 55*(title.length/parseFloat(8));
       toReturn.push((
 
       <Marker
@@ -122,7 +122,7 @@ export class MapContainer extends Component {
         percent_string = {percent_str}
         capacity = {percent}
         position={{lat: marker.latitude, lng: marker.longitude }}
-        icon={{url:img, scaledSize: {width: scale, height: 30}}}
+        icon={{url:img, scaledSize: {width: 100, height: 25}}}
 
         //symbol={{path: "../img/trader-joes-red.pdf"}}
         //label={{color: "blue", text: "hello", fontFamily: "Avenir", fontWeight: "bold"}}
@@ -175,7 +175,7 @@ export class MapContainer extends Component {
           <div className="col-md-12">
             <Map
               google={this.props.google}
-              zoom={14}
+              zoom={16}
               containerStyle={containerStyle}
               center={this.state.region}
               initialCenter={this.state.region}
