@@ -187,6 +187,7 @@ export class MapContainer extends Component {
                 onClose={this.onClose}
                 marker={this.state.activeMarker}
                 visible={this.state.showingInfoWindow}
+                minWidth={350}
               >
                 <div class = "info">
 
