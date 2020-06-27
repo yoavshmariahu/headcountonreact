@@ -98,7 +98,7 @@ export class MapContainer extends Component {
       if (marker['histogram'].capacity >= 0.75) {
         status = "red";
         percent= marker['histogram'].capacity * 100;
-        rec = "The store is at ".concat(percent, "% capacity. It may be risky to come now.");
+        rec = "It may be risky to shop now.";
       } else {
         status = "green";
         percent = marker['histogram'].capacity * 100;
@@ -192,13 +192,13 @@ export class MapContainer extends Component {
 
                   <h1>{this.state.selectedPlace.title}</h1>
                   <div> 
-                    <h3>Our recommendation:</h3> {this.state.selectedPlace.recommendation}
+                    <h3>Our recommendation: {this.state.selectedPlace.recommendation}</h3>
                   </div>
                   <div>
-                    <h3>People:</h3> {this.state.selectedPlace.name}
+                    <h3>People shopping right now: {this.state.selectedPlace.name}</h3>
                   </div>
                   <div>
-                    <h3>Capacity:</h3> {this.state.selectedPlace.capacity}%
+                    <h3>The store is {this.state.selectedPlace.capacity}% full</h3>
                   </div>
                  
                   
