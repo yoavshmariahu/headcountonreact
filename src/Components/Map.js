@@ -103,7 +103,7 @@ export class MapContainer extends Component {
         status = "green";
         percent = marker['histogram'].capacity * 100;
         percent_str = "The store is at ".concat(percent, "% capacity.");
-        rec = "Now is a good time to leave.";
+        rec = "Now is a good time to shop.";
       }
 
       var img_str = '/img/';
@@ -188,14 +188,14 @@ export class MapContainer extends Component {
                 marker={this.state.activeMarker}
                 visible={this.state.showingInfoWindow}
               >
-                <div>
+                <div class = "info">
 
                   <h1>{this.state.selectedPlace.title}</h1>
                   <div> 
-                    <h3>Our recommendation: {this.state.selectedPlace.recommendation}</h3>
+                    <h3>Recommendation: {this.state.selectedPlace.recommendation}</h3>
                   </div>
                   <div>
-                    <h3>People shopping right now: {this.state.selectedPlace.name}</h3>
+                    <h3>People at store: {this.state.selectedPlace.name}</h3>
                   </div>
                   <div>
                     <h3>The store is {this.state.selectedPlace.capacity}% full</h3>
